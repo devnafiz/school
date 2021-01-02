@@ -37,11 +37,20 @@ Route::prefix('profiles')->group(function(){
 
  Route::prefix('setups')->group(function(){
   Route::get('/view','StudentClassController@view')->name('setups.student.class.view');
-  Route::get('/add','StudentClassControllerStudentClassController@addUser')->name('setups.student.class.add');
+  Route::get('/add','StudentClassController@add')->name('setups.student.class.add');
   Route::post('/store','StudentClassController@store')->name('setups.student.class.store');
   Route::get('/edit/{id}','StudentClassController@edit')->name('setups.student.class.edit');
   Route::post('/update/{id}','StudentClassController@update')->name('setups.student.class.update');
-  Route::get('/delete/{id}','StudentClassController@delete')->name('setups.student.class.delete');
+  Route::post('/delete/','StudentClassController@delete')->name('setups.student.class.delete');
+
+  //student year
+   Route::get('/student/year/view','StudentYearController@view')->name('setups.student.year.view');
+  Route::get('/student/year/add','StudentYearController@add')->name('setups.student.year.add');
+  Route::post('/student/year/store','StudentYearController@store')->name('setups.student.year.store');
+  Route::get('/student/year/edit/{id}','StudentYearController@edit')->name('setups.student.year.edit');
+  Route::post('/student/year/update/{id}','StudentYearController@update')->name('setups.student.year.update');
+  Route::post('/student/year/delete/','StudentYearController@delete')->name('setups.student.year.delete');
+
 
 });
  
