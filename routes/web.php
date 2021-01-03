@@ -50,6 +50,22 @@ Route::prefix('profiles')->group(function(){
   Route::get('/student/year/edit/{id}','StudentYearController@edit')->name('setups.student.year.edit');
   Route::post('/student/year/update/{id}','StudentYearController@update')->name('setups.student.year.update');
   Route::post('/student/year/delete/','StudentYearController@delete')->name('setups.student.year.delete');
+  //student group
+   Route::get('/student/group/view','StudentGroupController@view')->name('setups.student.group.view');
+  Route::get('/student/group/add','StudentGroupController@add')->name('setups.student.group.add');
+  Route::post('/student/group/store','StudentGroupController@store')->name('setups.student.group.store');
+  Route::get('/student/group/edit/{id}','StudentGroupController@edit')->name('setups.student.group.edit');
+  Route::post('/student/group/update/{id}','StudentGroupController@update')->name('setups.student.group.update');
+  Route::post('/student/group/delete/','StudentGroupController@delete')->name('setups.student.group.delete');
+
+  //student shift
+
+   Route::get('/student/shift/view','StudentShiftController@view')->name('setups.student.shift.view');
+  Route::get('/student/shift/add','StudentShiftController@add')->name('setups.student.shift.add');
+  Route::post('/student/shift/store','StudentShiftController@store')->name('setups.student.shift.store');
+  Route::get('/student/shift/edit/{id}','StudentShiftController@edit')->name('setups.student.shift.edit');
+  Route::post('/student/shift/update/{id}','StudentShiftController@update')->name('setups.student.shift.update');
+  Route::post('/student/shift/delete/','StudentShiftController@delete')->name('setups.student.shift.delete');
 
 
 });
