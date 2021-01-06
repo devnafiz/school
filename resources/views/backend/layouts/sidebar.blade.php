@@ -123,6 +123,12 @@ $route=Route::current()->getName();
                   <p>View Group</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('setups.student.shift.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Shift</p>
+                </a>
+              </li>
               
               
             </ul>
