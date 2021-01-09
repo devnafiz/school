@@ -129,6 +129,18 @@ $route=Route::current()->getName();
                   <p>View Shift</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('setups.fee.category.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fee Category</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="{{route('setups.fee.amount.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fee Category Amount</p>
+                </a>
+              </li>
               
               
             </ul>

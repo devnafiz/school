@@ -67,6 +67,23 @@ Route::prefix('profiles')->group(function(){
   Route::post('/student/shift/update/{id}','StudentShiftController@update')->name('setups.student.shift.update');
   Route::post('/student/shift/delete/','StudentShiftController@delete')->name('setups.student.shift.delete');
 
+  //student shift
+
+   Route::get('/student/fee/category/view','FeeCategoryController@view')->name('setups.fee.category.view');
+  Route::get('/student/fee/category/add','FeeCategoryController@add')->name('setups.fee.category.add');
+  Route::post('/student/fee/category/store','FeeCategoryController@store')->name('setups.fee.category.store');
+  Route::get('/student/fee/category/edit/{id}','FeeCategoryController@edit')->name('setups.fee.category.edit');
+  Route::post('/student/fee/category/update/{id}','FeeCategoryController@update')->name('setups.fee.category.update');
+  Route::post('/student/fee/category/delete/','FeeCategoryController@delete')->name('setups.fee.category.delete');
+  //fee Amount
+
+   Route::get('/student/fee/amount/view','FeeAmountController@view')->name('setups.fee.amount.view');
+  Route::get('/student/fee/amount/add','FeeAmountController@add')->name('setups.fee.amount.add');
+  Route::post('/student/fee/amount/store','FeeAmountController@store')->name('setups.fee.amount.store');
+  Route::get('/student/fee/amount/edit/{id}','FeeAmountController@edit')->name('setups.fee.amount.edit');
+  Route::post('/student/fee/amount/update/{id}','FeeAmountController@update')->name('setups.fee.amount.update');
+  Route::post('/student/fee/amount/delete/','FeeAmountController@delete')->name('setups.fee.amount.delete');
+
 
 });
  
