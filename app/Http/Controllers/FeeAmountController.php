@@ -14,7 +14,7 @@ class FeeAmountController extends Controller
 
 
     //dd('ok');
-     	$data['allData']=FeeCategoryAmount::all();
+     	$data['allData']=FeeCategoryAmount::select('fee_category_id')->groupBy('fee_category_id')->get();
      	return view('backend.setup.fee_amount.view-amount',$data);
      }
 
@@ -31,39 +31,63 @@ class FeeAmountController extends Controller
      public function store(Request $request){
      	$countClass=count($request->class_id);
      	if($countClass !=null){
+     		for ($i=0; $i < $countClass; $i++) { 
+     		 $fee_amount=new FeeCategoryAmount();
+
+     		 $fee_amount->fee_category_id=$request->fee_category_id;
+     		 $fee_amount->class_id=$request->class_id[$i];
+     		 $fee_amount->amount=$request->amount[$i];
+     		 $fee_amount->save();
+     	}
 
      	}
-     	for ($i=0; $i < ; $i++) { 
-     		# code...
-     	}
-
-     	$fee_category=new FeeCategory;
-
-     	
-     	$fee_category->name=$request->name;
-     	
-     	$fee_category->save();
-     	return redirect()->route('setups.fee.category.view')->with('success','data save Successfully');
+     
+     	return redirect()->route('setups.fee.amount.view')->with('success','data save Successfully');
      }
 
-     public function edit($id){
+     public function edit($fee_category_id){
 
-     	$data['editData']=FeeCategory::find($id);
+     	$data['editData']=FeeCategoryAmount::where('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
+     	$data['fee_category']=FeeCategory::all();
+     	$data['classes']=StudentClass::all();
          
      	//dd($editData);
-     	return view('backend.setup.fee_category.edit-fee',$data);
+     	return view('backend.setup.fee_amount.edit-fee-amount',$data);
      }
 
-     public function update(Request $request,$id){
-     	$fee_category=FeeCategory::find($id);
+     public function update(Request $request,$fee_category_id){
+     	if($request->class_id==Null){
+     		return redirect()->back()->with('error','In valid data sent');
 
+     	}else{
+                 FeeCategoryAmount::where('fee_category_id',$fee_category_id)->delete();
+              $countClass=count($request->class_id);
+     	
+     		for ($i=0; $i < $countClass; $i++) { 
+     		 $fee_amount=new FeeCategoryAmount();
+
+     		 $fee_amount->fee_category_id=$request->fee_category_id;
+     		 $fee_amount->class_id=$request->class_id[$i];
+     		 $fee_amount->amount=$request->amount[$i];
+     		 $fee_amount->save();
      	
 
+     	}
+     	}
      	
-     	$fee_category->name=$request->name;
+     	return redirect()->route('setups.fee.amount.view')->with('success','data updated Successfully');
+     }
+
+     public function details($fee_category_id){
+
+     		$data['editData']=FeeCategoryAmount::where('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
+     			$data['fee_category']=FeeCategory::all();
+     	$data['classes']=StudentClass::all();
      	
-     	$fee_category->save();
-     	return redirect()->route('setups.fee.category.view')->with('success','data updated Successfully');
+         
+     	//dd($editData);
+     	return view('backend.setup.fee_amount.details-fee-amount',$data);
+
      }
 
      public function delete(Request $request){

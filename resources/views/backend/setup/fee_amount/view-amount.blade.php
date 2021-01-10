@@ -65,9 +65,11 @@
                    <tr class="{{$value->id}}">
                      
                      <td>{{$key+1}}</td>
-                     <td>{{$value->fee_category_id}}</td>
-                     <td><a href="{{route('setups.fee.amount.edit',$value->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                      <a href="{{route('setups.value.year.delete')}}" id="delete" class="btn btn-sm btn-danger" data-token="{{csrf_token()}}" data-id="{{$value->id}}"><i class="fa fa-trash"></i></a></td>
+                     <td>{{$value['fee_category']['name']}}</td>
+                     <td>
+                    <a href="{{route('setups.fee.amount.details',$value->fee_category_id)}}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                      <a href="{{route('setups.fee.amount.edit',$value->fee_category_id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                      <a href="{{route('setups.fee.amount.delete')}}" id="delete" class="btn btn-sm btn-danger" data-token="{{csrf_token()}}" data-id="{{$value->id}}"><i class="fa fa-trash"></i></a></td>
                    </tr>
 
                   @endforeach

@@ -80,8 +80,9 @@ Route::prefix('profiles')->group(function(){
    Route::get('/student/fee/amount/view','FeeAmountController@view')->name('setups.fee.amount.view');
   Route::get('/student/fee/amount/add','FeeAmountController@add')->name('setups.fee.amount.add');
   Route::post('/student/fee/amount/store','FeeAmountController@store')->name('setups.fee.amount.store');
-  Route::get('/student/fee/amount/edit/{id}','FeeAmountController@edit')->name('setups.fee.amount.edit');
-  Route::post('/student/fee/amount/update/{id}','FeeAmountController@update')->name('setups.fee.amount.update');
+  Route::get('/student/fee/amount/edit/{fee_category_id}','FeeAmountController@edit')->name('setups.fee.amount.edit');
+  Route::post('/student/fee/amount/update/{fee_category_id}','FeeAmountController@update')->name('setups.fee.amount.update');
+  Route::get('/student/fee/amount/details/{fee_category_id}','FeeAmountController@details')->name('setups.fee.amount.details');
   Route::post('/student/fee/amount/delete/','FeeAmountController@delete')->name('setups.fee.amount.delete');
 
 
