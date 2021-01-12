@@ -75,15 +75,28 @@ Route::prefix('profiles')->group(function(){
   Route::get('/student/fee/category/edit/{id}','FeeCategoryController@edit')->name('setups.fee.category.edit');
   Route::post('/student/fee/category/update/{id}','FeeCategoryController@update')->name('setups.fee.category.update');
   Route::post('/student/fee/category/delete/','FeeCategoryController@delete')->name('setups.fee.category.delete');
-  //fee Amount
+
+
+
 
    Route::get('/student/fee/amount/view','FeeAmountController@view')->name('setups.fee.amount.view');
   Route::get('/student/fee/amount/add','FeeAmountController@add')->name('setups.fee.amount.add');
   Route::post('/student/fee/amount/store','FeeAmountController@store')->name('setups.fee.amount.store');
-  Route::get('/student/fee/amount/edit/{fee_category_id}','FeeAmountController@edit')->name('setups.fee.amount.edit');
-  Route::post('/student/fee/amount/update/{fee_category_id}','FeeAmountController@update')->name('setups.fee.amount.update');
-  Route::get('/student/fee/amount/details/{fee_category_id}','FeeAmountController@details')->name('setups.fee.amount.details');
+  Route::get('/student/fee/amount/edit/{id}','FeeAmountController@edit')->name('setups.fee.amount.edit');
+  Route::post('/student/fee/amount/update/{id}','FeeAmountController@update')->name('setups.fee.amount.update');
   Route::post('/student/fee/amount/delete/','FeeAmountController@delete')->name('setups.fee.amount.delete');
+  //fee Amount
+
+   Route::get('/exam/type/view','ExamTypeController@view')->name('exam.type.view');
+  Route::get('/exam/type/add','ExamTypeController@add')->name('exam.type.add');
+  Route::post('/exam/type/store','ExamTypeController@store')->name('exam.type.store');
+  Route::get('/exam/type/edit/{id}','ExamTypeController@edit')->name('exam.type.edit');
+  Route::post('/exam/type/update/{id}','ExamTypeController@update')->name('exam.type.update');
+  
+  Route::post('/exam/type/delete/','ExamTypeController@delete')->name('exam.type.delete');
+
+
+
 
 
 });
