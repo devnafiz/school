@@ -94,6 +94,25 @@ Route::prefix('profiles')->group(function(){
   Route::post('/exam/type/update/{id}','ExamTypeController@update')->name('exam.type.update');
   
   Route::post('/exam/type/delete/','ExamTypeController@delete')->name('exam.type.delete');
+  //fee Subject type
+
+   Route::get('/subject/type/view','SubjectController@view')->name('subject.type.view');
+  Route::get('/subject/type/add','SubjectController@add')->name('subject.type.add');
+  Route::post('/subject/type/store','SubjectController@store')->name('subject.type.store');
+  Route::get('/subject/type/edit/{id}','SubjectController@edit')->name('subject.type.edit');
+  Route::post('/subject/type/update/{id}','SubjectController@update')->name('subject.type.update');
+  
+  Route::post('/subject/type/delete/','SubjectController@delete')->name('subject.type.delete');
+
+  //assign subject
+   Route::get('/assign/subject/view','AssignSubjectController@view')->name('subject.assign.subject.view');
+  Route::get('/assign/subject/add','AssignSubjectController@add')->name('subject.assign.subject.add');
+  Route::post('/assign/subject/store','AssignSubjectController@store')->name('subject.assign.subject.store');
+  Route::get('/assign/subject/edit/{class_id}','AssignSubjectController@edit')->name('subject.assign.subject.edit');
+  Route::post('/assign/subject/update/{class_id}','AssignSubjectController@update')->name('subject.assign.subject.update');
+  
+  Route::post('/assign/subject/delete/','AssignSubjectController@delete')->name('subject.assign.subject.delete');
+  Route::get('/assign/subject/details/{class_id}','AssignSubjectController@details')->name('subject.assign.subject.details');
 
 
 

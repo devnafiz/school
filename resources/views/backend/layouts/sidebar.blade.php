@@ -148,10 +148,17 @@ $route=Route::current()->getName();
                 </a>
               </li>
 
+              
               <li class="nav-item">
-                <a href="{{route('exam.type.view')}}" class="nav-link">
+                <a href="{{route('subject.type.view')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Exam Type</p>
+                  <p>Subject Type</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('subject.assign.subject.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Assign Subject</p>
                 </a>
               </li>
 
