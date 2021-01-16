@@ -65,7 +65,7 @@
                    <tr class="{{$value->id}}">
                      
                      <td>{{$key+1}}</td>
-                     <td>{{$value->class_id}}</td>
+                     <td>{{$value['student_class']['name']}}</td>
                      <td>
                     <a href="{{route('subject.assign.subject.details',$value->class_id)}}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
                       <a href="{{route('subject.assign.subject.edit',$value->class_id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

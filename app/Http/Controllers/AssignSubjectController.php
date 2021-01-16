@@ -15,7 +15,7 @@ class AssignSubjectController extends Controller
 
 
     //dd('ok');
-     	$data['allData']=AssignSubject::all();
+     	$data['allData']=AssignSubject::select('class_id')->groupBy('class_id')->get();
      	//$data['allData']=FeeCategoryAmount::select('fee_category_id')->groupBy('fee_category_id')->get();
      	return view('backend.setup.assign_subject.view-assign-subject',$data);
      }
@@ -31,64 +31,69 @@ class AssignSubjectController extends Controller
      }
 
      public function store(Request $request){
-     	$countClass=count($request->class_id);
-     	if($countClass !=null){
-     		for ($i=0; $i < $countClass; $i++) { 
-     		 $fee_amount=new FeeCategoryAmount();
+     	$countSubject=count($request->subject_id);
+     	if($countSubject !=null){
+     		for ($i=0; $i < $countSubject; $i++) { 
+     		 $assign_sub=new AssignSubject();
 
-     		 $fee_amount->fee_category_id=$request->fee_category_id;
-     		 $fee_amount->class_id=$request->class_id[$i];
-     		 $fee_amount->amount=$request->amount[$i];
-     		 $fee_amount->save();
+     		 $assign_sub->class_id=$request->class_id;
+     		 $assign_sub->subject_id=$request->subject_id[$i];
+     		 $assign_sub->full_mark=$request->full_mark[$i];
+     		 $assign_sub->pass_mark=$request->pass_mark[$i];
+     		  $assign_sub->get_mark=$request->get_mark[$i];
+     		 $assign_sub->save();
      	}
 
      	}
      
-     	return redirect()->route('setups.fee.amount.view')->with('success','data save Successfully');
+     	return redirect()->route('subject.assign.subject.view')->with('success','data save Successfully');
      }
 
-     public function edit($fee_category_id){
-
-     	$data['editData']=FeeCategoryAmount::where('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
-     	$data['fee_category']=FeeCategory::all();
+     public function edit($class_id){
+ 
+     	$data['editData']=AssignSubject::where('class_id',$class_id)->get();
+           //dd($data['editData']);
+     	$data['subjects']=Subject::all();
      	$data['classes']=StudentClass::all();
          
      	//dd($editData);
-     	return view('backend.setup.fee_amount.edit-fee-amount',$data);
+     	return view('backend.setup.assign_subject.edit-assign-subject',$data);
      }
 
-     public function update(Request $request,$fee_category_id){
-     	if($request->class_id==Null){
+     public function update(Request $request,$class_id){
+     	if($request->subject_id==Null){
      		return redirect()->back()->with('error','In valid data sent');
 
      	}else{
-                 FeeCategoryAmount::where('fee_category_id',$fee_category_id)->delete();
-              $countClass=count($request->class_id);
+                 AssignSubject::where('class_id',$class_id)->delete();
+              $countSubject=count($request->subject_id);
      	
-     		for ($i=0; $i < $countClass; $i++) { 
-     		 $fee_amount=new FeeCategoryAmount();
+     		for ($i=0; $i < $countSubject; $i++) { 
+     		 $assign_sub=new AssignSubject();
 
-     		 $fee_amount->fee_category_id=$request->fee_category_id;
-     		 $fee_amount->class_id=$request->class_id[$i];
-     		 $fee_amount->amount=$request->amount[$i];
-     		 $fee_amount->save();
+     		 $assign_sub->class_id=$request->class_id;
+     		 $assign_sub->subject_id=$request->subject_id[$i];
+     		 $assign_sub->full_mark=$request->full_mark[$i];
+                 $assign_sub->pass_mark=$request->pass_mark[$i];
+               $assign_sub->get_mark=$request->get_mark[$i];
+     		 $assign_sub->save();
      	
 
      	}
      	}
      	
-     	return redirect()->route('setups.fee.amount.view')->with('success','data updated Successfully');
+     	return redirect()->route('subject.assign.subject.view')->with('success','data updated Successfully');
      }
 
-     public function details($fee_category_id){
+     public function details($class_id){
 
-     		$data['editData']=FeeCategoryAmount::where('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
-     			$data['fee_category']=FeeCategory::all();
-     	$data['classes']=StudentClass::all();
+     		$data['editData']=AssignSubject::where('class_id',$class_id)->orderBy('subject_id','asc')->get();
+               $data['subjects']=Subject::all();
+               $data['classes']=StudentClass::all();
      	
          
      	//dd($editData);
-     	return view('backend.setup.fee_amount.details-fee-amount',$data);
+     	return view('backend.setup.assign_subject.details-assign-subject',$data);
 
      }
 

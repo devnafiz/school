@@ -36,7 +36,7 @@
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
 
-                 Assign Subject 
+                 Edit Assign Subject 
                 
                 </h3>
                 <a href="{{route('subject.assign.subject.view')}}" class="btn btn-success float-right"><i class="fa fa-list-circle"></i>Assign Subjects list</a>
@@ -49,7 +49,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form action="{{route('subject.assign.subject.store')}}" method="post" id="myForm">
+                <form action="{{route('subject.assign.subject.update',$editData[0]->class_id)}}" method="post" id="myForm">
                   {{csrf_field()}}
                      <div class="add_item">
                   <div class="form-row">
@@ -58,7 +58,7 @@
                         <select class="form-control" name="class_id">
                            <option value="">Class Name</option>
                            @foreach($classes as $class)
-                             <option value="{{$class->id}}">{{$class->name}}</option>
+                             <option value="{{$class->id}}" {{($editData[0]->class_id==$class->id)?"selected":""}}>{{$class->name}}</option>
 
                            @endforeach
                         </select>
@@ -66,14 +66,15 @@
                     </div>
                     
                   </div>
-
+            @foreach($editData as $edit)
+            <div class="delete_whole_extra_item_add" id="delete_whole_extra_item_add">
                    <div class="form-row">
-                     <div class="col-md-5">
+                     <div class="col-md-4">
                       <label for="email"> Subject Name</label>
                         <select class="form-control" name="subject_id[]">
                            <option value="">Subject Name</option>
                             @foreach($subjects as $sub)
-                             <option value="{{$sub->id}}">{{$sub->name}}</option>
+                             <option value="{{$sub->id}}" {{($edit->subject_id==$sub->id)?"selected":""}}>{{$sub->name}}</option>
 
                            @endforeach
                         </select>
@@ -81,29 +82,31 @@
                     </div>
                     <div class="col-md-2">
                       <label for="email"> Full Mark</label>
-                        <input type="text" name="full_mark[]" class="form-control">
+                        <input type="text" name="full_mark[]" class="form-control" value="{{$edit->full_mark}}">
                       
                     </div>
 
                     <div class="col-md-2">
                       <label for="email"> Pass Mark</label>
-                        <input type="text" name="pass_mark[]" class="form-control">
+                        <input type="text" name="pass_mark[]" class="form-control" value="{{$edit->pass_mark}}">
                       
                     </div>
                     <div class="col-md-2">
                       <label for="email"> Subjective Mark</label>
-                        <input type="text" name="get_mark[]" class="form-control">
+                        <input type="text" name="get_mark[]" class="form-control" value="{{$edit->get_mark}}">
                       
                     </div>
 
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                       <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle "></i></span>
+                      <span class="btn btn-success removeeventmore"><i class="fa fa-minus-circle "></i></span>
                        
                       
                     </div>
                     
                   </div>
-                  
+                </div>
+                  @endforeach
                 </div>
               
                   </div>
