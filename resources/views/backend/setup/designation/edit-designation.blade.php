@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage User</h1>
+            <h1 class="m-0">Manage Designation</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User </li>
+              <li class="breadcrumb-item active">Designation </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -36,9 +36,10 @@
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
 
-                 Add Supplier
-                 <a href="{{route('suppliers.view')}}" class="btn btn-success float-right"><i class="fa fa-list-circle"></i>supplier list</a>
+                 Edit Designation
+                
                 </h3>
+                <a href="{{route('designation.view')}}" class="btn btn-success float-right"><i class="fa fa-list-circle"></i>Designation list</a>
                 
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -48,34 +49,22 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form action="{{route('suppliers.store')}}" method="post" id="myForm">
+                <form action="{{route('designation.update',$editData->id)}}" method="post" id="myForm">
                   {{csrf_field()}}
 
                   <div class="form-row">
                     
+                   
+
+                    
+                    
                     <div class="col-md-6">
-                      <label for="name"> Supplier Name</label>
-                      <input type="text" name="name" class="form-control" >
+                      <label for="email"> Designation</label>
+                      <input type="text" name="name" class="form-control" value="{{$editData->name}}" >
                       <font style="color: red">{{($errors->has('name'))?($errors->first('name')):''}}</font>
                       
                     </div>
-                    <div class="col-md-6">
-                      <label for="mobile_no">Mobile no</label>
-                      <input type="text" name="mobile_no" class="form-control" >
-                      <font style="color: red">{{($errors->has('mobile_no'))?($errors->first('mobile_no')):''}}</font>
-                      
-                    </div>
-                    <div class="col-md-6">
-                      <label for="email">Email</label>
-                      <input type="email" name="email" class="form-control" >
-                      <font style="color: red">{{($errors->has('email'))?($errors->first('email')):''}}</font>
-                      
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="address">Address</label>
-                      <input type="text" name="address" id="address" class="form-control">
-                      
-                    </div>
+                    
                     
                     
                   </div>
@@ -119,40 +108,13 @@ $(function () {
     rules: {
       name:{
           required:true,
-      },
-      mobile_no:{
-          required:true,
-      },
-      email: {
-        required: true,
-        email: true,
-      },
-       address: {
-        required: true,
-        
-      }
+     
 
       
      
     },
     messages: {
-        name: {
-        required: "Please enter a  Supplier Name",
-       
-      },
-      email: {
-        required: "Please enter a email address",
-        email: "Please enter a vaild email address"
-      },
-      password: {
-        required: "Please provide a password",
-        minlength: "Your password must be at least 5 characters long"
-      },
-      password2: {
-        required: "Please provide a password",
-        equalTo: "Your password not match"
-      },
-      terms: "Please accept our terms"
+        
     },
     errorElement: 'span',
     errorPlacement: function (error, element) {

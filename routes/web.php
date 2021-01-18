@@ -114,6 +114,14 @@ Route::prefix('profiles')->group(function(){
   Route::post('/assign/subject/delete/','AssignSubjectController@delete')->name('subject.assign.subject.delete');
   Route::get('/assign/subject/details/{class_id}','AssignSubjectController@details')->name('subject.assign.subject.details');
 
+   Route::get('/designation/view','DesignationController@view')->name('designation.view');
+  Route::get('/designation/add','DesignationController@add')->name('designation.add');
+  Route::post('/designation/store','DesignationController@store')->name('designation.store');
+  Route::get('/designation/edit/{id}','DesignationController@edit')->name('designation.edit');
+  Route::post('/designation/update/{id}','DesignationController@update')->name('designation.update');
+  
+  Route::post('/designation/delete/','DesignationController@delete')->name('designation.delete');
+
 
 
 

@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Unit</h1>
+            <h1 class="m-0">Manage Designation</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Unit </li>
+              <li class="breadcrumb-item active">Designation </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -36,9 +36,10 @@
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
 
-                 Edit Unit
-                 <a href="{{route('units.view')}}" class="btn btn-success float-right"><i class="fa fa-list-circle"></i>unit view</a>
+                 Add Designation
+                
                 </h3>
+                <a href="{{route('designation.view')}}" class="btn btn-success float-right"><i class="fa fa-list-circle"></i>Designation list</a>
                 
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -48,23 +49,28 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form action="{{route('units.update',$editData->id)}}" method="post" id="myForm">
+                <form action="{{route('designation.store')}}" method="post" id="myForm">
                   {{csrf_field()}}
 
                   <div class="form-row">
                     
+                   
+
+                    
+                    
                     <div class="col-md-6">
-                      <label for="name">unit Name</label>
-                      <input type="text" name="name" class="form-control" value="{{$editData->name}}">
+                      <label for="email"> Designation</label>
+                      <input type="text" name="name" class="form-control" >
                       <font style="color: red">{{($errors->has('name'))?($errors->first('name')):''}}</font>
                       
                     </div>
                     
                     
+                    
                   </div>
                   <div class="form-row">
                      <div class="form-group col-md-6">
-                      <input type="submit" value="update" class="btn btn-primary">
+                      <input type="submit" value="submit" class="btn btn-primary">
                        
                      </div>
                     
@@ -100,18 +106,15 @@ $(function () {
   
   $('#myForm').validate({
     rules: {
-      name: {
-        required: true,
-       
-      }
+      name:{
+          required:true,
+     
+
       
+     
     },
     messages: {
-       name: {
-        required: "Please Enter Name",
         
-      }
-      
     },
     errorElement: 'span',
     errorPlacement: function (error, element) {

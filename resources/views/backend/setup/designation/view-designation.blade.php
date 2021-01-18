@@ -7,12 +7,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Supplier</h1>
+            <h1 class="m-0">Manage Designation</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Supplier </li>
+              <li class="breadcrumb-item active">
+            <h1 class="m-0">Manage Designation</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -36,10 +37,10 @@
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
 
-                 User List
-                 <a href="{{route('suppliers.add')}}" class="btn btn-success float-right"><i class="fa fa-plus-circle"></i></a>
+                  Designation List
+                 
                 </h3>
-                
+                <a href="{{route('designation.add')}}" class="btn btn-success float-right"><i class="fa fa-plus-circle"></i></a>
               </div><!-- /.card-header -->
               <div class="card-body">
                   <div class="card">
@@ -53,43 +54,27 @@
                   <tr>
                     <th>SL.</th>
                    
-                    <th>Name</th>
-                    <th>Mobile No</th>
-                    <th>Email</th>
-                    <th>Address</th>
+                    
+                    <th>Designation</th>
                     <th>Action</th>
+
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach($allData as $key=>$supplier)
-                  <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$supplier->name}} </td>
-                    <td>{{$supplier->mobile_no}}</td>
-                    <td>{{$supplier->email}}</td>
-                    <td>{{$supplier->address}}</td>
-                    @php
-                    $supplier_count=App\Product::where('supplier_id',$supplier->id)->count();
+                  @foreach($allData as $key=>$value)
 
-                    @endphp
-                    <td><a href="{{route('suppliers.edit',$supplier->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                      @if($supplier_count<1)
-                      <a href="{{route('suppliers.delete',$supplier->id)}}" id="deleta" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                      @endif
-                    </td>
-                  </tr>
-                 @endforeach
+                   <tr class="{{$value->id}}">
+                     
+                     <td>{{$key+1}}</td>
+                     <td>{{$value->name}}</td>
+                     <td><a href="{{route('designation.edit',$value->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                      <a href="{{route('designation.delete')}}" id="delete" class="btn btn-sm btn-danger" data-token="{{csrf_token()}}" data-id="{{$value->id}}"><i class="fa fa-trash"></i></a></td>
+                   </tr>
+
+                  @endforeach
                 
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->
@@ -113,5 +98,63 @@
     </section>
     <!-- /.content -->
   </div>
+  <script type="text/javascript">
+    
+    $(document).ready(function(){
+
+        $(document).on('click','#delete',function(){
+           var actionTo=$(this).attr('href');
+           var token=$(this).attr('data-token');
+           var id=$(this).attr('data-id');
+
+           Swal({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        },
+        function(isConfirm){
+
+          if(isConfirm){
+            $.ajax({
+                    url:actionTo,
+                    type:'post',
+                    data:{id:id,_token:token},
+                    success:function(data){
+                      
+                      Swal({
+                          title:"deleted",
+                          type:"success"
+                      },function(isConfirm){
+
+                          if(isConfirm){
+                            $('.'+id).fadeOut()
+                          }
+                      });
+
+
+
+                      
+                    }
+
+
+            });
+          }else{
+            swal("cancelled","","error");
+          }
+        });
+
+        return false;
+       
+
+
+
+        });
+
+    });
+  </script>
 
   @endsection
