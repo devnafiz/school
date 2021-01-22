@@ -29,6 +29,7 @@ class User extends Authenticatable
     ];
 
     /**
+    $2y$10$GxAx1t0fkFt/JwLCZP7kQuTsrPVCJh0sBLC3AIsLYw5NQAIEMspoi
      * The attributes that should be cast to native types.
      *
      * @var array

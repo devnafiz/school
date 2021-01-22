@@ -55,6 +55,7 @@
                     <th>Role</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Password</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -66,6 +67,7 @@
                     </td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
+                    <td>{{$user->code}}</td>
                     <td><a href="{{route('users.edit',$user->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                       <a href="{{route('users.delete',$user->id)}}" id="deleta" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                     </td>

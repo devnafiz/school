@@ -180,6 +180,16 @@ Route::prefix('profiles')->group(function(){
 
 });
 
+   Route::prefix('students')->group(function(){
+  Route::get('/reg/view','StudentRegController@view')->name('students.reg.view');
+  Route::get('/reg/add','StudentRegController@addUser')->name('students.reg.add');
+  Route::post('/reg/store','StudentRegController@store')->name('students.reg.store');
+  Route::get('/reg/edit/{id}','StudentRegController@edit')->name('students.reg.edit');
+  Route::post('/reg/update/{id}','StudentRegController@update')->name('students.reg.update');
+  Route::get('/reg/delete/{id}','StudentRegController@delete')->name('students.reg.delete');
+
+});
+
  
 
 

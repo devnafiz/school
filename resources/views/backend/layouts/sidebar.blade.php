@@ -26,16 +26,7 @@ $route=Route::current()->getName();
       </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+     
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -53,7 +44,7 @@ $route=Route::current()->getName();
             
           </li>
           
-          @if(Auth::user()->usertype="Admin")
+          @if(Auth::user()->role="Admin")
           <li class="nav-item {{($prefix=='/users')?'menu-open':''}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -274,7 +265,26 @@ $route=Route::current()->getName();
               
             </ul>
           </li> 
-             
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Manage Student Registration
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('students.reg.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Registration</p>
+                </a>
+              </li>
+              
+              
+            </ul>
+          </li>   
          
         </ul>
       </nav>

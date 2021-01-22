@@ -54,10 +54,10 @@
                   <div class="form-row">
                     <div class="form-group col-md-4">
                       <label for="usertype">user</label>
-                      <select name="usertype" id="usertype" class="form-control">
+                      <select name="role" id="usertype" class="form-control">
                             <option value=""> User Roll</option>
                             <option value="Admin"> Admin</option>
-                            <option value="User">User</option>
+                            <option value="Operator">operator</option>
                       </select>
                       
                     </div>
@@ -73,16 +73,7 @@
                       <font style="color: red">{{($errors->has('email'))?($errors->first('email')):''}}</font>
                       
                     </div>
-                    <div class="form-group col-md-4">
-                      <label for="password">Password</label>
-                      <input type="password" name="password" id="password" class="form-control">
-                      
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="password"> Confirm Password</label>
-                      <input type="password" name="password2"  class="form-control">
-                      
-                    </div>
+                    
                     
                   </div>
                   <div class="form-row">
@@ -123,7 +114,7 @@ $(function () {
   
   $('#myForm').validate({
     rules: {
-      usertype: {
+      role: {
         required: true,
        
       },
@@ -131,14 +122,7 @@ $(function () {
         required: true,
         email: true,
       },
-      password: {
-        required: true,
-        minlength: 6
-      },
-      password2:{
-        required: true,
-         equalTo:'#password'
-      },
+      
      
     },
     messages: {
