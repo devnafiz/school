@@ -26,15 +26,38 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('backend')}}/plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="{{asset('backend')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+ 
   <link rel="stylesheet" href="{{asset('backend')}}/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="{{asset('backend')}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+    ></script>
+    <!-- BootStrap DatePicker CSS -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    />
+     <!-- Popper JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
 
-  <script src="{{asset('backend')}}/plugins/jquery/jquery.min.js"></script>
+    <!-- BootStrap 4 JS -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+ 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notify.js/3.0.0/notify.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/notify.js/3.0.0/notify.js"></script>
+
+ <script src="{{asset('backend')}}/plugins/jquery/jquery.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <style type="text/css">
@@ -300,5 +323,11 @@
 
   });
 </script>
+
+<script type="text/javascript">
+      $(".input-daterange input").each(function() {
+        $(this).datepicker("clearDates");
+      });
+    </script>
 </body>
 </html>
