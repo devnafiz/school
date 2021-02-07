@@ -42,6 +42,36 @@
                 <a href="{{route('students.reg.add')}}" class="btn btn-success float-right"><i class="fa fa-plus-circle"></i> add student</a>
               </div><!-- /.card-header -->
               <div class="card-body">
+                <form action="" method="GET" id="myform">
+                   <div class="form-row">
+                     <div class="col-md-4">
+                      <label for="email">Class <font style="color:red">*</font></label>
+                      <select name="class_id" class="form-control">
+                        <option>select class</option>
+                        @foreach($classes as $class)
+                        <option value="{{$class->id}}"  {{(@class_id==$class->id) ?'selected':''}}>{{$class->name}}</option>
+                        @endforeach
+                      </select>
+                      
+                    </div>
+                    <div class="col-md-4">
+                      <label for="email">Year <font style="color:red">*</font></label>
+                      <select name="year_id" class="form-control">
+                        <option value="">select Year</option>
+                        @foreach($years as $yr)
+                        <option value="{{$yr->id}}" {{(@year_id==$yr->id) ?'selected':''}}>{{$yr->name}}</option>
+                        @endforeach
+                        
+                      </select>
+                      
+                    </div>
+                    <div class="col-md-3" style="padding-top: 28px;">
+                      <button type="submit" class="btn btn-sm btn-success"  name="search">search</button>
+                    </div>
+                     
+                   </div>
+
+                </form>
                   <div class="card">
               <div class="card-header">
                 <h3 class="card-title">DataTable with default features</h3>
@@ -56,6 +86,10 @@
                     
                     <th>Name</th>
                     <th>Id Number</th>
+                    <th>Roll</th>
+                    <th>Year</th>
+                    <th>Class</th>
+                    <th>code</th>
                     <th>Action</th>
 
                   </tr>
@@ -67,6 +101,9 @@
                      
                      <td>{{$key+1}}</td>
                      <td>{{$value->class_id}}</td>
+                     <td>{{$value->class_id}}</td>
+                     <td>{{$value->class_id}}</td>
+                     
                      <td>{{$value->year_id}}</td>
                      <td><a href="{{route('students.reg.edit',$value->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                       </td>

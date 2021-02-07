@@ -16,7 +16,12 @@ use App\StudentShift;
 class StudentRegController extends Controller
 {
     public function view(){
-    	$data['allData']=AssignSudent::all();
+    	
+       $data['years']=StudentYear::orderBy('id','DESC')->get();
+        $data['year_id']=StudentYear::orderBy('id','DESC')->first();
+        $data['class_id']=StudentClass::orderBy('id','asc')->first();
+       $data['classes']=StudentClass::all();
+       $data['allData']=AssignSudent::where('year_id',$data['year_id'])->where('class_id',$data['class_id'])->get();
     	return view('backend.student.student_reg.student-view',$data);
 
 
@@ -24,7 +29,7 @@ class StudentRegController extends Controller
 
     public function add(){
 
-       $data['years']=StudentYear::all();
+       $data['years']=StudentYear::orderBy('id','DESC')->get();
        $data['classes']=StudentClass::all();
        $data['groups']=StudentGroup::all();
        $data['shifts']=StudentShift::all();
